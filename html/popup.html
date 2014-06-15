@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Batch Save - Pocket
+	</title>
+	<meta charset="utf-8">
+	<meta name="description" content="Batch Save - An extension to add multiple links to Pocket at once.">
+	<meta name="author" content="Karandeep Bhatia">
+	<link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<script type="text/javascript" src="/libs/jquery-2.1.0.min.js"></script>
+	<script type="text/javascript" src="/js/auth.js"></script>
+	<script type="text/javascript" src="/js/api.js"></script>
+	<script type="text/javascript" src = "/js/popup.js"></script>
+	<script type="text/javascript" src="/libs/bootstrap.min.js" ></script>
+	<style type="text/css">
+		#link-content
+		{
+			margin: 10px;
+		}
+		#no-link-content
+		{
+		   min-width:400px;
+		   min-height:70px;
+		   margin: 10px;
+		}
+		#error,#loading,#success
+		{
+			min-width:400px;
+		   	margin: 10px;
+			display: none;
+		}
+		
+	</style>
+</head>
+<body>
+<h4 align="center">Batch Save - Pocket</h4>
+<div id="no-link-content">
+		<p align="center">You haven't selected any links. Submit current page to Pocket?</p>
+        <div class="input-group">
+            <input type="text" class="form-control" id = "single-tag" placeholder='Tags (optional, comma seperated)'>
+            <span class="input-group-btn">
+               <button type="button" class="btn btn-success" id = "submit-single-button">Submit to Pocket</button>
+            </span>
+        </div>
+</div>
+<div id="link-content">
+	<div class="input-group">
+           <input type = "text" class="form-control" id="common-tags" name = 'common-tags' placeholder = 'Add Common Tags (Optional, comma seperated)'>
+            <span class="input-group-btn">
+               <button type="button" class="btn btn-success" id = "submit-button">Submit to Pocket</button>
+            </span>
+    </div>
+    <br>
+	<table id = "mytable" class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>S.No.</th>
+				<th>Select</th>
+				<th>Title</th>
+				<th >Url</th>
+				<th>Tags(Optional)</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+</div>
+
+<p id = "loading" class="bg-info" >Loading...</p>
+<p class="bg-success" id="success">Success</p>
+<p id="error" class="bg-danger"></p>
+</div>
+</body>
+</html>

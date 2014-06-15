@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "Batch Save Pocket",
+  "short_name" : "Pocket Batch",
+  "description": "Add multiple links to Pocket at once through the selected text.",
+  "version": "1.0",
+ "permissions": [ "https://*/*", "http://*/*", "tabs" , "storage"],
+  "browser_action": 
+  {
+    "default_icon": "img/icon128.png",
+    "default_popup": "html/popup.html"
+  },
+  "icons": { 
+           "48": "img/icon48.png",
+          "128": "img/icon128.png" }
+          ,
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": [ "js/script.js"]
+    }
+  ],
+    "web_accessible_resources": [ "html/login.html"]
+}
