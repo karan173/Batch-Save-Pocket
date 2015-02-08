@@ -1,25 +1,23 @@
 (function()
 {
-	var linksSelected = false;
-	function buildPage()
+	function buildLinks(links)
 	{
-		chrome.tabs.executeScript(null, {file:"js/script.js"});
-		chrome.runtime.onMessage.addListener(
-			function(request, sender, sendResponse) 
-			{
-				urls = request.urls;
-				titles = request.titles;
-				$('#no-link-content').hide();
-				$('#link-content').show();
-				var checkbox = '<input type="checkbox" checked>';
-				var tag_input = '<input type = "text" style = "max-width:150px">';
-				for (var i=0; i<urls.length; i++) 
-				{
-					var url = urls[i];
-					str = "<tr><td>" + (i+1) + "</td>" + "<td>" + checkbox +"</td>" +"<td>"+titles[i]+"</td>" + "<td><a href = '" + url + "' target='_blank' >"  + url + "</a></td><td>" + tag_input + "</td></tr>";
-					$('#mytable > tbody').append(str);
-				}
-			});
+		urls = links.urls;
+		titles = links.titles;
+		$('#no-link-content').hide();
+		$('#link-content').show();
+		var checkbox = '<input type="checkbox" checked>';
+		var tag_input = '<input type = "text" style = "max-width:150px">';
+		for (var i=0; i<urls.length; i++) 
+		{
+			var url = urls[i];
+			var title_input = '<input type = "text" style = "max-width:150px" value = "'+ titles[i] +'">';
+			str = "<tr><td>" + (i+1) + "</td>" + "<td>" + checkbox +"</td>" +"<td>"+title_input+"</td>" +
+				"<td><a href = '" + url + "' target='_blank' >"  + url + "</a></td><td>" + tag_input + "</td></tr>";
+			$('#mytable > tbody').append(str);
+		}
+		$('.toggable').hide();
+		$('#link-content').show();
 	}
 	function single_submit_handler()
 	{
@@ -75,6 +73,22 @@
 			alert('error');
 		});
 	}
+	function parse_submit_handler()
+	{
+		var text = $('#links').val();
+		var urls = text.match(/\S+/g);
+		if(!urls)
+		{
+			$('#paste-error').text('Please enter a valid list');
+		}
+		titles = [];
+		for(var i = 0; i < urls.length; i++)
+		{
+			titles.push('');
+		}
+		var req = {"urls" : urls, "titles" : titles};
+		buildLinks(req);
+	}	
 	$(document).ready(function()
 	{
 		if(!Auth.isAuthenticated())
@@ -84,11 +98,13 @@
 		$('.pocket-button').click(pocket_button_handler); //common to both
 		$('#submit-single-button').click(single_submit_handler);
 		$('#submit-button').click(submit_button_handler);
-		buildPage();
-		if(!linksSelected)
-		{
-			$('#link-content').hide();
-			$('#no-link-content').show();
-		}
+		$('#parse-links').click(parse_submit_handler);
+		chrome.tabs.executeScript(null, {file:"js/script.js"});
+		
+		chrome.runtime.onMessage.addListener(
+			function(request, sender, sendResponse) 
+			{
+				buildLinks(request);
+			});
 	});
 })();
