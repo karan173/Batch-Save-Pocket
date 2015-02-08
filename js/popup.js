@@ -2,8 +2,8 @@
 {
 	function buildLinks(links)
 	{
-		urls = links.urls;
-		titles = links.titles;
+		var urls = links.urls;
+		var titles = links.titles;
 		$('#no-link-content').hide();
 		$('#link-content').show();
 		var checkbox = '<input type="checkbox" checked>';
@@ -12,7 +12,7 @@
 		{
 			var url = urls[i];
 			var title_input = '<input type = "text" style = "max-width:150px" value = "'+ titles[i] +'">';
-			str = "<tr><td>" + (i+1) + "</td>" + "<td>" + checkbox +"</td>" +"<td>"+title_input+"</td>" +
+			var str = "<tr><td>" + (i+1) + "</td>" + "<td>" + checkbox +"</td>" +"<td>"+title_input+"</td>" +
 				"<td><a href = '" + url + "' target='_blank' >"  + url + "</a></td><td>" + tag_input + "</td></tr>";
 			$('#mytable > tbody').append(str);
 		}
@@ -25,8 +25,8 @@
 		{
 			var current_url = tabs[0].url;
 			var tags = $('#single-tag').val();
-			actions = [];
-			row = 
+			var actions = [];
+			var row = 
 			{
 				"tags" : tags,
 				"url" : current_url,
@@ -42,36 +42,33 @@
 	}
 	function submit_button_handler()
 	{
-		common_tags = $('#common-tags').val();
-		actions = [];
-		$('input:checkbox:checked').each(function()
+		var common_tags = $('#common-tags').val();
+		var actions = [];
+		var unix_timestamp = Math.round((new Date()).getTime() / 1000); 
+		$('input:checkbox:checked').each(function(index)
 		{
 			var title = $(this).parent().next();
 			var link = title.next();
-					var tags = link.next()[0].children[0].value; //somehow can't get jquery to work here, so had to use pure js
-					//var tags = link.nextSibling;
-					title = title.text();
-					link = link.text();
-					if(common_tags.length > 0)
-					{
-						tags = tags + ',' + common_tags;
-					}
-					row = 
-					{
-						"tags" : tags,
-						"title" : title,
-						"url" : link,
-						"action" : "add",
-					};
-					actions.push(row);
-				});
-		PocketAPI.modify(actions, function()
-		{
-			alert('done');
-		}, function()
-		{
-			alert('error');
+			var tags = link.next()[0].children[0].value; //somehow can't get jquery to work here, so had to use pure js
+			//var tags = link.nextSibling;
+			title = title.text();
+			link = link.text();
+			if(common_tags.length > 0)
+			{
+				tags = tags + ',' + common_tags;
+			}
+			var row = 
+			{
+				"tags" : tags,
+				"title" : title,
+				"url" : link,
+				"action" : "add",
+				"time" : '' + (unix_timestamp-index) 
+				//those above in last will have max time and therefore will appear up in Pocket interfaces
+			};
+			actions.push(row);
 		});
+		PocketAPI.modify(actions);
 	}
 	function parse_submit_handler()
 	{
@@ -81,7 +78,7 @@
 		{
 			$('#paste-error').text('Please enter a valid list');
 		}
-		titles = [];
+		var titles = [];
 		for(var i = 0; i < urls.length; i++)
 		{
 			titles.push('');
