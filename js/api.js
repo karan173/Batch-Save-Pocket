@@ -46,7 +46,7 @@ var PocketAPI =
 			    	  }
 			    	  if(!error || error === null) //if undefined or null
 			    	  {
-			    	  		console.log('Unknown error 1 [in PocketAPI.modify].')
+			    	  		console.log('Unknown error 1 [in PocketAPI.modify].');
 			    	  		error = "Error. The Request could not be completed. Contact extension developer if error persists.";
 			    	  }
 			    	  else
@@ -62,4 +62,4 @@ var PocketAPI =
 			    } 
 		});
 	}
-}
+};

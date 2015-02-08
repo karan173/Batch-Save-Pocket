@@ -3,7 +3,7 @@ var Auth =  //OOPS through object literals, see http://www.phpied.com/3-ways-to-
 	consumer_key : '26599-a591a3cc721d662f7bbbe4e5',
 	isAuthenticated : function()
 		{
-			return localStorage['access_token'] && localStorage['access_token'] != null;
+			return localStorage['access_token'] && localStorage['access_token'] !== null;
 		},
 	authenticate : function()
 		{
@@ -36,7 +36,7 @@ var Auth =  //OOPS through object literals, see http://www.phpied.com/3-ways-to-
 			    	  var error = xhr.getResponseHeader('X-Error');
 			    	  if(!error || error === null) //if undefined or null
 			    	  {
-			    	  		console.log('Unknown error 1 [in authenticate].')
+			    	  		console.log('Unknown error 1 [in authenticate].');
 			    	  }
 			    	  else
 			    	  {
@@ -79,7 +79,7 @@ var Auth =  //OOPS through object literals, see http://www.phpied.com/3-ways-to-
 			    	  var error = xhr.getResponseHeader('X-Error');
 			    	  if(!error || error === null) //if undefined or null
 			    	  {
-			    	  		console.log('Unknown error 1 [in getAccessToken].')
+			    	  		console.log('Unknown error 1 [in getAccessToken].');
 			    	  }
 			    	  else
 			    	  {
@@ -93,4 +93,4 @@ var Auth =  //OOPS through object literals, see http://www.phpied.com/3-ways-to-
 			    }
 			});
 		}
-}
+};
