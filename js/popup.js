@@ -70,13 +70,18 @@
 		});
 		PocketAPI.modify(actions);
 	}
+	
+	//taken from http://stackoverflow.com/questions/161738/what-is-the-best-regular-expression-to-check-if-a-string-is-a-valid-url
+	//the RegexBuddy answer
+	var regex =  /\b(https?|ftp|file):\/\/[\-A-Za-z0-9+&@#\/%?=~_|!:,.;]*[\-A-Za-z0-9+&@#\/%=~_|‌​]/gi;
 	function parse_submit_handler()
 	{
 		var text = $('#links').val();
-		var urls = text.match(/\S+/g);
-		if(!urls)
+		var urls = text.match(regex);
+		if(!urls || urls.length === 0)
 		{
-			$('#paste-error').text('Please enter a valid list');
+			$('#paste-error').text('Please enter a valid list').show();
+			return;
 		}
 		var titles = [];
 		for(var i = 0; i < urls.length; i++)
