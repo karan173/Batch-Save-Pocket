@@ -86,6 +86,10 @@
 		var req = {"urls" : urls, "titles" : titles};
 		buildLinks(req);
 	}	
+	function logout_hander()
+	{
+		Auth.logout();
+	}
 	$(document).ready(function()
 	{
 		if(!Auth.isAuthenticated())
@@ -96,6 +100,11 @@
 		$('#submit-single-button').click(single_submit_handler);
 		$('#submit-button').click(submit_button_handler);
 		$('#parse-links').click(parse_submit_handler);
+		$('a#logout').click(logout_hander);
+		$('body').on('click', 'a.link', function(){  //set up hyperlinks in popup.html as chrome blocks them
+    		chrome.tabs.create({url: $(this).attr('href')});
+    		return false;
+	   	});
 		chrome.tabs.executeScript(null, {file:"js/script.js"});
 		
 		chrome.runtime.onMessage.addListener(

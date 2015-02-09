@@ -5,7 +5,7 @@ var Auth =  //OOPS through object literals, see http://www.phpied.com/3-ways-to-
 		{
 			return localStorage['access_token'] && localStorage['access_token'] !== null;
 		},
-	authenticate : function()
+	authenticate : function()  //get request token
 		{
 			var url = 'https://getpocket.com/v3/oauth/request';
 			var redirect_uri = window.location.href;
@@ -92,5 +92,13 @@ var Auth =  //OOPS through object literals, see http://www.phpied.com/3-ways-to-
 			    {
 			    }
 			});
+		},
+		logout : function()
+		{
+			if(this.isAuthenticated())
+			{
+				delete localStorage['access_token'];
+				window.close();
+			}
 		}
 };
