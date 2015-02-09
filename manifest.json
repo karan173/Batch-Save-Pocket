@@ -3,7 +3,7 @@
   "name": "Batch Save Pocket",
   "short_name" : "Pocket Batch",
   "description": "Add multiple links to Pocket at once through the selected text.",
-  "version": "1.0",
+  "version": "2.0",
  "permissions": [ "https://*/*", "http://*/*", "tabs" , "storage"],
   "browser_action": 
   {
