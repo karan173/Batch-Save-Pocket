@@ -63,7 +63,7 @@
 				"title" : title,
 				"url" : link,
 				"action" : "add",
-				"time" : '' + (unix_timestamp-index) 
+				"time" : '' + (unix_timestamp+index) 
 				//those above in last will have max time and therefore will appear up in Pocket interfaces
 			};
 			actions.push(row);
