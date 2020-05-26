@@ -14,7 +14,6 @@
   "icons": {
            "48": "img/icon48.png",
           "128": "img/icon128.png" }
-          ,
  ,
     "web_accessible_resources": [ "html/login.html"]
 }
