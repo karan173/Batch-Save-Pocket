@@ -8,7 +8,7 @@
 		$('#link-content').show();
 		var checkbox = '<input type="checkbox" checked>';
 		var tag_input = '<input type = "text" style = "max-width:150px">';
-		for (var i=0; i<urls.length; i++) 
+		for (var i=0; i<urls.length; i++)
 		{
 			var url = urls[i];
 			var title_input = '<input type = "text" style = "max-width:150px" value = "'+ titles[i] +'">';
@@ -26,7 +26,7 @@
 			var current_url = tabs[0].url;
 			var tags = $('#single-tag').val();
 			var actions = [];
-			var row = 
+			var row =
 			{
 				"tags" : tags,
 				"url" : current_url,
@@ -36,15 +36,11 @@
 			PocketAPI.modify(actions);
 		});
 	}
-	function pocket_button_handler()
-	{
-		chrome.tabs.create({'url': 'http://getpocket.com/a/queue/list/'});  
-	}
 	function submit_button_handler()
 	{
 		var common_tags = $('#common-tags').val();
 		var actions = [];
-		var unix_timestamp = Math.round((new Date()).getTime() / 1000); 
+		var unix_timestamp = Math.round((new Date()).getTime() / 1000);
 		$('input:checkbox:checked').each(function(index)
 		{
 			var title = $(this).parent().next();
@@ -57,20 +53,20 @@
 			{
 				tags = tags + ',' + common_tags;
 			}
-			var row = 
+			var row =
 			{
 				"tags" : tags,
 				"title" : title,
 				"url" : link,
 				"action" : "add",
-				"time" : '' + (unix_timestamp-index) 
+				"time" : '' + (unix_timestamp-index)
 				//those above in last will have max time and therefore will appear up in Pocket interfaces
 			};
 			actions.push(row);
 		});
 		PocketAPI.modify(actions);
 	}
-	
+
 	//taken from http://stackoverflow.com/questions/161738/what-is-the-best-regular-expression-to-check-if-a-string-is-a-valid-url
 	//the RegexBuddy answer
 	var regex =  /\b(https?|ftp|file):\/\/[\-A-Za-z0-9+&@#\/%?=~_|!:,.;]*[\-A-Za-z0-9+&@#\/%=~_|‌​]/gi;
@@ -90,7 +86,7 @@
 		}
 		var req = {"urls" : urls, "titles" : titles};
 		buildLinks(req);
-	}	
+	}
 	function logout_hander()
 	{
 		Auth.logout();
@@ -99,9 +95,8 @@
 	{
 		if(!Auth.isAuthenticated())
 		{
-			Auth.authenticate();	
-		} 	
-		$('.pocket-button').click(pocket_button_handler); //common to both
+			Auth.authenticate();
+		}
 		$('#submit-single-button').click(single_submit_handler);
 		$('#submit-button').click(submit_button_handler);
 		$('#parse-links').click(parse_submit_handler);
@@ -111,9 +106,9 @@
     		return false;
 	   	});
 		chrome.tabs.executeScript(null, {file:"js/script.js"});
-		
+
 		chrome.runtime.onMessage.addListener(
-			function(request, sender, sendResponse) 
+			function(request, sender, sendResponse)
 			{
 				buildLinks(request);
 			});
