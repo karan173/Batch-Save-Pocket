@@ -51,7 +51,10 @@
 			link = link.text();
 			if(common_tags.length > 0)
 			{
-				tags = tags + ',' + common_tags;
+				if (tags.length > 0)
+					tags = tags + ',' + common_tags;
+				else
+					tags = common_tags;
 			}
 			var row =
 			{
