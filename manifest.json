@@ -4,14 +4,14 @@
   "short_name" : "Pocket Batch",
   "description": "Add multiple links to Pocket at once through the selected text or by pasting links into the extension.",
   "version": "2.0",
- "permissions": [ "https://*/*", "http://*/*", "tabs" , "storage"],
+ "permissions": [ "https://*/*", "http://*/*", "tabs"],
  "author" : "Karandeep Singh Bhatia(karan173)",
-  "browser_action": 
+  "browser_action":
   {
     "default_icon": "img/icon128.png",
     "default_popup": "html/popup.html"
   },
-  "icons": { 
+  "icons": {
            "48": "img/icon48.png",
           "128": "img/icon128.png" }
           ,
