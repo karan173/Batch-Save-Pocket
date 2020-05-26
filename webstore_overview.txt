@@ -13,3 +13,8 @@ Changelog v2.0
 --Added feature to add links to Pocket by pasting them into extension.
 --Now multiple links will be added to Pocket in the order in which they appear in the extension.
 --Basic UI changes.
+
+Changelog v3.0
+--Fixed bugs with common tag not being added.
+- The extension requires less permissions now.
+- Added a link to the user's Pocket account on the popup.
