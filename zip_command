@@ -1,0 +1,3 @@
+#!/bin/bash
+
+zip -r ../batch_save_v3.zip * -x "*.git*" -x "*.DS_Store" -x "screenshots*" -x "*.txt" -x "README" -x "zip_command"
