@@ -4,7 +4,7 @@
   "short_name" : "Pocket Batch",
  "description": "Add multiple links to Pocket at once through the selected text or by pasting links into the extension.",
  "version": "3.0",
- "permissions": [ "activeTab", "tabs", "*://getpocket.com/*"],
+ "permissions": [ "activeTab", "*://getpocket.com/*"],
  "author" : "Karandeep Singh Bhatia(karan173)",
   "browser_action":
   {
