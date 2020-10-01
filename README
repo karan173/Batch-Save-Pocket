@@ -1,10 +1,14 @@
-Batch Save Pocket is a Chrome extension to add multiple links to Pocket at once through the selected text.
 
-Find this extension on the Chrome webstore here - https://chrome.google.com/webstore/detail/batch-save-pocket/ihhiomekhplpdojbcaniaglcfopckaef?hl=en
+# Batch Save Pocket 
+
+Batch Save Pocket is a Chrome extension to add multiple links to [Pocket](https://app.getpocket.com/) at once through the selected text.
+
+Find this extension on the [Chrome web store](https://chrome.google.com/webstore/detail/batch-save-pocket/ihhiomekhplpdojbcaniaglcfopckaef?hl=en).
 
 This extension is an add-on for Pocket, formerly Read It Later. It allows the user to add multiple links to their Pocket account at once, through the text they select on Chrome or by pasting links into the extension. All the hyperlinks/urls in the selected text are parsed by this extension. It is also possible to add common and custom tags to the selected links before sending them to Pocket.
 
-Dependencies - 
-Jquery
-Bootstrap 3
+**Dependencies:**
+- Jquery
+- Bootstrap 3
 
+[![Tweet](https://img.shields.io/twitter/url?url=https%3A%2F%2Fhoppscotch.io%2F)](http://twitter.com/share?url=https://chrome.google.com/webstore/detail/batch-save-pocket/ihhiomekhplpdojbcaniaglcfopckaef)
